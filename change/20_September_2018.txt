@@ -1,0 +1,17 @@
+splitter.h
+
+- line (272 - 283), sketch update calculation
+- line (345-375), removed extra parameter from function and tested properly after refactoring this part
+- line (402-422), renaming variable to isS2, removed unnecessary operation of updating ordered_items vector
+- line (443-446), split_value member variable removed for CategoricalSplitResult
+- line (717-756), update logic to storing best_S1 in CategoricalSplitResult
+
+tree.h
+
+- line(24-27), removed member variable CategoricalTreeNode
+- line(323-331), code added while printing the tree for CategoricalTreeNode
+- line(407-552), codes realted to finding prediction and accuracy calculation added
+
+test.cpp
+
+-  line (12-124), data load from csv, split train, test set, randomly selecting training samples

@@ -1,0 +1,16 @@
+bool,,
+short,,
+int,,
+float,,
+double,,
+char,,
+string,,
+int,false,true
+int,,
+int,,,
+int,,,1
+int,,,,yanda
+int,,false,,
+int,,false,,100
+int,,false,,100,yanda
+string,false,true

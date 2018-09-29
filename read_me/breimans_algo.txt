@@ -1,0 +1,28 @@
+- sort the column based on avg y value for each category of that particular column
+
+############ need something like this in the column.h file
+
+// param : row iterator start, row iterator end, Output Column Y
+// find unique groups of values within the range [start, end), calculate average of Y values,
+// sort based on those Y values from [start, end)
+//
+void row_sort_categorical(vector<size_t>::iterator it1, vector<size_t>::iterator it2, Column* Y){
+
+}
+
+
+- Splitter.h
+
+- need to do batch sketch update (handled from inside set_best_pos_classify_breiman())
+- impurity_improvement_fn() //  kept it same for both cases
+
+
+Implemented following method to handle breiman classification
+
+template <class T>
+void set_best_pos_classify_breiman(vector<size_t>::iterator start, vector<size_t>::iterator end, //row index range
+                                   Column* Y, Column* Xi, double &best_impurity_improvement, size_t &best_offset) {
+}
+
+
+- should we keep the attribute name somewhere (to make the printing more human readable)

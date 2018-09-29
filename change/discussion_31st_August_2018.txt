@@ -1,0 +1,39 @@
+1. do the refactoring as suggested
+2. test breiman's regression thoroughly for DT
+3. red, green, blue (subset [start, end]),
+there might be yellow (need to consider this case, it is not considered now)
+
+4. Think about the Brute force approach (2 types of Y value Gini faster, Xi more than 10 categroy may be we can exclude
+ or other method  described  bellow link, study properly)
+
+There is a good answer: https://stats.stackexchange.com/questions/152433/will-decision-trees-perform-splitting-of-nodes-by-converting-categorical-values
+
+but still not that useful.
+
+I think we do this:
+
+check domain size, and warn and exit if Xi has too many values (e.g., zip code); users need to reduce values by converting zip codes to regions (states, for example); optionally, we can reject to use this column for splitting, or use some tricks like just consider |S1| = 1 v.s |S2| = n-1 splitting
+if not too big, enumerate by brute force.
+
+
+This is tricky, since you may consider splitting S to S1 and S2, and when S = {ABC} the case:
+S1 = {A}, S2 = {BC} is repeated with S1 = {BC} and S2 = {A} and should be avoided.
+
+I think we just need to iterate  |S1| = i  from 1 to |S|/2 ---> /2 to avoid double counting
+for each i
+{
+      for each S1 of size i, S2 = S - S1
+      check info_gain under S1, S2
+}
+
+In the above case |S| = 3, and so we just consider |S1| = 3/2 = 1, i.e.,
+S1 = A
+S1 = B
+S1 = C
+and they cover all 3 possible splits.
+
+Let me know your thoughts. Otherwise, we can implement this brute force algorithm (only works for small |S|)
+
+5. need to remember (1 .. n/2) , for (n/2)-th case (duplicate can be avoided by following order (lexical or else))
+6. for enumeration (any library ?)
+

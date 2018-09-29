@@ -1,0 +1,66 @@
+1. Implemented Breiman's Algorithm Xi (ordinal/categorical), Y (Ordinal), followed the way found here http://www.dcc.fc.up.pt/~ltorgo/PhD/th3.pdf (page 72 and onwards)
+
+2. Tried to test Regression example (X,Y ordinal), but it has become very difficult to verify (in the examples found in the web I have found many with more than 2 split for a particular node). We have considered only binary splitting (left and right child)
+
+3. Overall it has become very difficult to test the decision tree with real examples and output (All impurities like Entropy, Gini, Classification Error, Variance).
+
+4. Should we add in "meta" file "column name" to make Decision Tree printing more read friendly ?
+
+
+suitable order of reading
+
+1. test.cpp
+2. tree.h
+3. Splitter.h
+4. Column.h
+
+################# Code changes related to Breiman's Algorithm (X ordinal/categorical), (Y ordinal) ##################
+
+Splitter.h
+
+1. line - 273 - 369
+
+
+// have done the batch update sketch, calculated left and right child impurity to deal with categorical data (Xi)
+// proper  test cases are added in test.cpp (line - 838 - 987)
+
+void set_best_pos_classify_breiman(vector<size_t>::iterator start, vector<size_t>::iterator end, //row index range
+                                   Column* Y, Column* Xi, double &best_impurity_improvement, size_t &best_offset) {
+///
+}
+
+
+2. line - 483 - 514 in node_split function to deal with Xi categorical data
+
+
+
+tree.h (this file is newly written after you leave from here, I am only discussing what I have changed with respect to my last mail)
+
+1. line 30 -34 (sorting categorical data based on breiman's alogorithm)
+2. line 106 - 120 (if the stoping cirteria meet have kept the node's information as it's parent), it is ok ?
+3. line 167 - 177 (train(...) function added while building tree)
+4. line 179 - 423 (print_tree(..) and print_detail(..) function added), codes related to Decision Tree printing. I don't know whether it is the best way, might need improvement to make it more user read friendly.
+
+
+column.h
+
+1. line 29 - 64 (helper function added to reduce code from other parts of the code base, might have some performance overhead, is so need to change other parts of the code, might not be suitable for research)
+2. line 127 - 165 (Comarator class added while doing sorting categorical data according to breiman's algorithm)
+3. line  167 - 218 (void row_sort_categorical(.....)), this function is to do the categorical column(Xi) sorting (Breiman's Algorithm)
+
+
+test.cpp
+
+1. line 745 - 836 (Breiman's algorithm categorical data sorting example)
+2. line 838 - 987 (Breiman's algorithm categorical data sketch update (batch update) test case)
+3. line 989 - 1016 (Breiman's algorithm main function to test), while simulating using pen and paper it seems ok but not identical to the test result found in the web as they have split the nodes more than 2 (not only binary splitting)
+
+
+
+
+What is not done Yet
+
+1. need to find proper way of testing the full decision tree for all the cases.
+2. Regression test (X,Y continuous), did not find any useful example yet to verify.
+3. need to implement depth param in tree building to avoid overfitting.
+4. Regression (X categorical, Y continuous) not implemented yet.

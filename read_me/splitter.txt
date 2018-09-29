@@ -1,0 +1,98 @@
+to find the best split while scanning the data set
+
+1. calculate the parent_impurity, on the entire data set
+
+2. sort the sample for column (X_i)
+
+3. initialize right child as the parent_impurity
+
+4. incrementally start scanning the training set from left to right until finding the best split
+
+5. sum_y, sum_y^2, sum_1 are necessary for variance calculation
+
+6. keep sum_y, sum_y^2, sum_1 for each pos update to reduce computation (left child and right child)
+
+7. Here y is the target column.
+
+8. for each update of pos (position) we are going to add on
+left (sum_y + z, sum_y^2 + z^2, sum_1 + 1), reduce (exact same) amount from right (how??????)
+
+9. At first we would compute (sum_y, sum_y^2 and sum_1) for entire set (right child)
+
+10. then for training sample scanning we are going to update left (adding) and update right
+(subtracting)
+
+11. while doing this for all the features we need to keep the best feature index for which
+(- left(variance) - right(variance)) is maximum.
+
+#######################################################
+Splitter
+
+Splitter(Matrix& data_set, size_t target_col_idx) {
+    // data_set, target_col_idx should be same
+    // only start and end would be different for find_best_split() function
+}
+
+- calc (struct var_container right) for entire data set (start - end) considered
+
+void get(var_container* right, auto start, auto end, Column* target) { // parent impurity
+
+}
+
+- start scanning from pos = start and pos = end in data set
+(update the struct var_container left) each time.
+
+double variance(var_container* node) {
+    // return variance (sum_y, sum_y^2, sum_1)
+}
+
+double get_impurity(var_container* left, var_container* right) {
+    // returns (-left - right)
+}
+
+size_t find_best_split(auto start, auto end) {
+    // find the best pos among all the split using the functions and return that pos
+}
+
+size_t
+
+------------------------------
+// 1. design sketch
+// 2. impurity(sketch) = score
+// 3. split based on best score
+
+* Variance:
+
+struct var_sketch //sketch for variance
+{
+    double sum_y;
+    double sum_y2;
+    double sum_1;
+};
+
+double var(var_sketch & sketch)
+{//compute variance from sketch
+    //...
+}
+
+void set_sketch(var_sketch & sketch, ??? start, ??? end, Column* y)
+{//compute sketch over rows [start, end), using labels y[row_idx]
+    //...
+}
+
+template <class T>
+void update_sketches(var_sketch & sketch_L, var_sketch & sketch_R, T value) //T should be numeric
+{//incrementally update left and right child-nodes' sketches,
+ //after moving "value" from right child to left child
+    //...
+}
+
+
+---------------------------------------------------------
+
+entropy, gini, classification error
+
+struct classify_sketch {
+    map<T, size_t> freq_map; // c1, c2, c3 ... and
+    size_t N;
+};

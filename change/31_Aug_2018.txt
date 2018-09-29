@@ -1,0 +1,36 @@
+- moved all codes from column.h to splitter.h
+- functions to look at
+
+splitter.h
+
+1. line - 15-22 : struct category_item {}
+
+2. line - 24 - 30 : struct Category_comparator
+
+3. line - 82 - 92 : void update_sketches(var_sketch & sketch_L, var_sketch & sketch_R, category_item value)
+
+4. line - 343 - 382 : void set_sorted_category_item(vector<size_t>::iterator start,
+                                                 vector<size_t>::iterator end, Column* Xi, Column* Y,
+                                                 vector<category_item> &category_items) {}
+
+5. line 385 - 394 : void set_sorted_indices(vector<size_t>::iterator start, vector<category_item> &category_items) {
+}
+
+6. line 398 - 405 : void row_sort_categorical(vector<size_t>::iterator start, vector<size_t>::iterator end,
+                                              Column* Xi, Column* Y, vector<category_item> &category_items){
+                                              }
+
+7. line 518 -548 : categorical sorting and breiman's regression function call
+
+8. line 306 - 341 :void set_best_pos_regression_breiman(vector<size_t>::iterator start, vector<size_t>::iterator end, //row index range
+                                                Column* Xi, Column* Y, vector<category_item> &category_items,
+                                                        double &best_impurity_improvement, size_t &best_offset) {
+                                                        }
+
+
+test.cpp
+
+1. categorical sorting (line 760 - 854)
+2. category item batch sketch update (line  856 - 948)
+3. breiman's algorithm to a tree (line 952-981)
+

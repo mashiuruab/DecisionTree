@@ -1,0 +1,2 @@
+1. need to keep unique items between [start, end) of training set (categorical column) // in tree node ??
+2.

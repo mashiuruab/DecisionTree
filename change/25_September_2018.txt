@@ -1,0 +1,25 @@
+
+1. Xi Categorical, for a particular Subset (A,B,C) where |S| = (A,B,C,D),
+it is now taken care off (tree.h, splitter.h)
+2. Wrapper main function with all the parameters configurable (test.cpp)
+3. Data Split functionality from csv file (test.cpp)
+
+1. splitter.h
+
+line - 443 - 447
+line - 722 - 767
+line - 846 - 858
+
+2. tree.h
+
+line - 24-29
+line - 108
+line - 520
+line - 529 - 614
+
+3. test.cpp
+
+line - 1745 - 1833
+line - 16 - 130
+
+

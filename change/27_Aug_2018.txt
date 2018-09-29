@@ -1,0 +1,9 @@
+1. breiman's regression / classification
+
+- suppose X1 (cont.), X2(categorical) , Y (Continuous),
+  for X1 We use sorting, set_best_pos_classification (entropy, gini, classification) /
+  set_best_pos_regression (variance) (incremental sketch update)
+  for X2 we use categorical sorting,  set_best_pos_classify_breiman (entropy, gini, classification) /
+  set_best_pos_regression_breiman(variance) (batch sketch update)
+
+  OrdinalSplitResult is now serving both ordinal and categorical case

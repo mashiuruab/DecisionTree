@@ -1,0 +1,21 @@
+- X (Categorical), Y (categorical)
+- brute force S1, S2, S
+- Entropy, Gini, Classification impurity calculation
+
+functions to implement
+
+1. Xi(categorical data), categorize the data with indices (something like vector<Item>,
+we need to define a new structure), lexical sorting here (Apple, Banana, Orange ....)
+
+2. write combination/enumeration function
+
+- input is (0 ... vector<category_item>.size()) [(vector<category_item>, sorted) // lexical sorting (alphabetic sorting)]
+- return vector<vector<int>> (this would be [vector of vector of indices] of vector<category_item>)
+// we need to handle with indices here to avoid dealing with a copy of a heavy object category_item
+
+3. set_best_pos_classification
+
+- need to write something like this to deal with batch update (combination/enumeration result)
+- might need to rewrite the function and deal directly with input param
+(vector<cateory_item> items, vector<vector<int>> indices) instead of [start, end)
+- classify sketch function can be kept as it is

@@ -1,0 +1,79 @@
+Some important information about the tree.h file
+
+tree.h
+
+1.
+
+struct TreeNode {
+......
+......
+};
+
+- TreeNode component used while building the tree
+
+
+2.
+
+// param : Column, row_idx
+// output : string  value of column[row_idx]
+// this  method is used to avoid type conversion again and again
+// see the  implementation in tree.h file
+
+string column_value(Column* col, size_t row_idx) {
+........
+}
+
+3.
+
+// for debugging purpose
+// can be removed  later or keep as it is now
+void print_debug(SplitResult* result, vector<size_t>::iterator start,
+vector<size_t>::iterator end, Matrix &data_set, size_t y_index) { // [start, end)
+...........
+}
+
+4.
+
+// this function is to decide when to stop splitting between [start, end)
+// param : start_iterator,  end_iterator (exclusive), Column Y
+// output : true for stopping else  otherwise
+template <class T>
+bool stop_splitting(vector<size_t>::iterator start, vector<size_t>::iterator end, Column* Y) {
+.............
+}
+
+5.
+
+- helper function while used in building the tree
+
+void build_tree(vector<size_t>::iterator start, vector<size_t>::iterator end,
+                Matrix &data_set, size_t y_index, TreeNode* &node, size_t &node_count) {
+.............
+}
+
+6.
+// train function to train the DecisionTree on data_set and output_y
+// param : Matrix& data_set, output_col_idx, sorted sample_indices
+// output : root node of the tree
+TreeNode* train(Matrix &data_set, size_t y_index, vector<size_t> &indices) {
+.......
+}
+
+7.
+// helper function to print detail result while traversing the tree
+// param : root TreeNode* node, Matrix& data_set, output y_index
+// print detail about the tree node, left child,  right child, parent node id and current node id
+void print_detail(TreeNode* node, Matrix &data_set, size_t y_index) {
+.......
+}
+
+8.
+// printing the tree starting from root to each leaf
+// recursive function called repeatedly until the end
+// param  : TreeNode* root, Matrix& data_set and output_col_index
+void print_tree(TreeNode* root,  Matrix &data_set, size_t y_index) {
+
+}
+
+---------------------------------------------------------------------------------------------------------
+

@@ -1,0 +1,113 @@
+most suitable reading order of the file
+
+- tree.h
+- test.cpp
+
+// tested soybean.csv data set for ENTROPY, GINI, CLASSIFICATION_ERROR impurity function
+//  you can also run  using make clean,make,./run to see the result
+
+ENTROPY  result :
+
+1.
+
+root node - 1 (node id)
+- total sample size = 47
+splitted on 2 parts (D1, D3) = 20 and (D2, D4) = 27
+
+left child = 2(node id) , right child 5 (node id)
+
+2. node with id 2
+
+- total sample size = 20 (D1, D3)
+- splitted on 2 parts (D3, D1) = (10, 10)
+- left child 3(node id), right child = 4 (node id)
+
+3. node  with id 5
+
+- total sample size = 27 (D2, D4)
+- splitted on 2 parts (D4 = 17) , (D2 = 10)
+- left child node = 6, right child node = 7
+
+GINI Impurity Function Result :
+
+1.
+
+root node - 1 (node id)
+
+- total sample size = 47
+- splitted the node into 2 parts left = [(D1, D2, D3), 29], right = [(D3, D4) = 18]
+- left child node = 2, right child node = 7
+
+2.
+
+node id = 2
+
+total sample size = 29
+split into 2 parts D2 = 10 and right  (D1,D3) = 19
+left child node = 3, right child node = 4
+
+3. node  id = 4
+- total sample size = 19
+- split into  2 parts D3 = 9, D1 = 10
+- left child node = 5,  right child node = 6
+
+4. node  id = 7
+
+- total sample size = 18 (D3, D4)
+- splitted in to 2 parts left (D4 = 1),  right = (D3, D4 = (1,16))
+- left child node = 8,  right child node = 9
+
+5. node id = 9
+
+- total sample size = 17
+- splitted into  2 parts left (D3 =1) and  right (D4 = 16)
+- left child node = 10, right child node = 11
+
+
+Classification Error Test :
+
+1.
+
+root node = 1
+- sample size = 47
+- split into 2 parts left = 28 (D1, D2, D3, D4), right = 19 (D1,D2,D3,D4)
+- left child node  = 2, right child node = 9
+
+2.
+
+node id = 2
+- total sample size = 28
+- split into 2 parts (D3 = 9) and (D1,D2,D4) = 19
+- left child node  = 3, right child node = 4
+
+3.
+
+node id = 4
+
+- total sample size = 19
+- split into 2 parts (D1, D2) =  2 and (D1,D4) = 17
+- left child node = 5, right child node = 8
+
+4.
+
+node id = 5
+
+- total sample size = 2
+- split into 2 parts left (D1 = 1), right (D2 = 1)
+- left child node = 6, right child node = 7
+
+5.
+
+node id = 9
+
+- total sample size = 19 (D1, D2, D3, D4)
+- split into 2 parts (D2=9) and (D1,D3,D4) = 10
+- left child node  = 10, right child node = 11
+
+6.
+
+node id = 11
+- total sample  size = 10 (D1, D3, D4)
+- split into 2 parts left (D3 = 1) and right (D1 = 8, D4 = 1)
+- left child node = 12, right child node = 13
+
